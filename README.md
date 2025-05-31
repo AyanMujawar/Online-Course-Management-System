@@ -39,7 +39,7 @@ This Online Course Management System (OCMS) is designed to manage:
 
 ## 🔍 ER Diagram
 
-![ER Diagram](./er_diagram.png)  
+![ER Diagram](ER_Diagram.png)  
 *Created using dbdiagram.io*
 
 - **Primary keys** are underlined  
