@@ -1,0 +1,55 @@
+# -------------------------
+# OS / Editor / IDE Files
+# -------------------------
+
+# macOS
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# Visual Studio Code settings
+.vscode/
+
+# IntelliJ / PyCharm / DataGrip
+.idea/
+
+# -------------------------
+# Database & Build Artifacts
+# -------------------------
+
+# MySQL Workbench auto‐generated files
+*.mwb
+
+# SQLite database files (if you ever generate a .db locally)
+*.db
+*.sqlite
+*.sqlite3
+
+# Exported CSV/JSON/Dump files
+*.csv
+*.json
+*.sql.gz
+*.sql.zip
+
+# Temporary SQL scripts/backups
+*_backup.sql
+*_dump.sql
+
+# -------------------------
+# Logs & Miscellaneous
+# -------------------------
+
+# Log files
+*.log
+
+# OS‐generated files
+*.swp
+*~  
+
+# Node modules (if you ever add a frontend/backend later)
+node_modules/
+
+# Python cache (if you later add a Flask/Python layer)
+__pycache__/
+*.py[cod]
