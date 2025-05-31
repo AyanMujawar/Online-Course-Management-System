@@ -6,7 +6,7 @@ This project demonstrates:
 - **Database schema design** (DDL): Tables, relationships, constraints  
 - **Sample data population** (DML): Pre-filled with realistic records  
 - **50 SQL queries**: CRUD, complex joins, aggregations, views, analytics  
-- **ER Diagram**: Visual entity-relationship model
+- **ER Diagram**: Visual entity-relationship model  
 
 ---
 
@@ -14,41 +14,50 @@ This project demonstrates:
 
 This Online Course Management System (OCMS) is designed to manage:
 
-- **Students** (registration, profiles)
-- **Instructors** (profiles, departments, experience)
-- **Courses** (curriculum, instructor linkage)
-- **Enrollments** (students joining/dropping courses, status tracking)
-- **Assignments** (course tasks, due dates)
-- **Submissions** (assignment uploads, marks)
-- **Course Feedback** (ratings, comments)
-- **Certificates** (issued on course completion)
-- **Admins** (platform administrators)
-- **Announcements** (course-specific notices)
-- **Departments** (organizing instructors/courses)
+- **Students** (registration, profiles)  
+- **Instructors** (profiles, departments, experience)  
+- **Courses** (curriculum, instructor linkage)  
+- **Enrollments** (students joining/dropping courses, status tracking)  
+- **Assignments** (course tasks, due dates)  
+- **Submissions** (assignment uploads, marks)  
+- **Course Feedback** (ratings, comments)  
+- **Certificates** (issued on course completion)  
+- **Admins** (platform administrators)  
+- **Announcements** (course-specific notices)  
+- **Departments** (organizing instructors/courses)  
 
 **Key SQL concepts covered:**
-- Table creation with PK/FK constraints
-- Normalization up to 3NF
-- INSERT, UPDATE, DELETE operations
-- JOINs (INNER, LEFT, RIGHT)
-- Aggregate functions (`COUNT`, `AVG`, `SUM`), `GROUP BY`, `HAVING`
-- `VIEW` definitions for reusable query logic
-- Subqueries, nested queries, conditional DML
+- Table creation with PK/FK constraints  
+- Normalization up to 3NF  
+- INSERT, UPDATE, DELETE operations  
+- JOINs (INNER, LEFT, RIGHT)  
+- Aggregate functions (`COUNT`, `AVG`, `SUM`), `GROUP BY`, `HAVING`  
+- `VIEW` definitions for reusable query logic  
+- Subqueries, nested queries, conditional DML  
+
+---
+
+## 📋 Prerequisites
+
+Before running this project, ensure you have:
+- **MySQL 8.0+** (or compatible MariaDB version) installed  
+- A MySQL client or IDE (e.g., MySQL Workbench, HeidiSQL, DBeaver)  
+- Basic familiarity with executing `.sql` scripts via command line or GUI  
 
 ---
 
 ## 🔍 ER Diagram
 
 ![ER Diagram](ER_Diagram.png)  
-*Created using dbdiagram.io*
+*Created using dbdiagram.io*  
 
 - **Primary keys** are underlined  
 - **Foreign keys** (FK) link tables  
-- Cardinality (1-to-many, many-to-many via junction tables) is depicted
+- Cardinality (1-to-many, many-to-many via junction tables) is depicted  
 
 ---
 
-## 🔧 File Structure
+## 📂 Directory Structure
 
 ```
 Online-Course-Management-System/
@@ -56,26 +65,39 @@ Online-Course-Management-System/
 ├── data.sql           # DML: INSERT statements to populate tables
 ├── queries.sql        # 50 SQL queries (CRUD, joins, views, analytics)
 ├── er_diagram.png     # ER diagram image
+├── .gitignore         # Git ignore rules for OS/IDE artifacts and DB dumps
 └── README.md          # Project overview and instructions
 ```
 
 - **`schema.sql`**  
-  Sets up all tables in correct order with DROP IF EXISTS to prevent conflicts.
+  - Creates all tables in the correct order (Departments → Students, Instructors → Courses → Enrollments, Assignments → Submissions → Course_Feedback → Certificates → Admins → Announcements).  
+  - Includes `DROP TABLE IF EXISTS` for easy re-runs.
 
 - **`data.sql`**  
-  Populates every table with realistic sample data (students, instructors, courses, etc.).
+  - Populates each table with realistic sample data (e.g., three students, three instructors, three courses, sample assignments/submissions, feedback, certificates, admins, announcements).  
+  - Ensures you can immediately run queries against non-empty tables.
 
 - **`queries.sql`**  
-  Contains 50+ well-documented SQL statements demonstrating a wide range of operations.
+  - Contains **50 well-documented SQL statements**:  
+    1. **SELECT** queries (joins, filters, aggregates)  
+    2. **UPDATE** queries (conditional updates, bulk data adjustments)  
+    3. **DELETE** queries (cascade-like cleanup, status-based deletes)  
+    4. **CREATE VIEW** statements (reusable result sets for: student grades, instructor courses, assignment performance, feedback summaries, active students, top performers, etc.)  
+    5. Example usage of views via additional SELECTs  
+  - Each query is prefixed with a comment indicating its purpose/title.
 
 - **`er_diagram.png`**  
-  Visual summary of tables and their relationships.
+  - A PNG screenshot exported from dbdiagram.io showing entities, attributes, and relationships.  
+  - Embedded in the README to give a quick visual summary.
+
+- **`.gitignore`**  
+  - Prevents local/IDE-specific files (e.g., `.DS_Store`, `.vscode/`), database dumps (e.g., `*.db`, `*_dump.sql`), and logs (e.g., `*.log`) from being committed.
 
 ---
 
 ## ⚙️ Setup & Usage
 
-1. **Clone the repository**
+1. **Clone the repository**  
    ```bash
    git clone https://github.com/AyanMujawar/Online-Course-Management-System.git
    cd Online-Course-Management-System
@@ -89,12 +111,12 @@ Online-Course-Management-System/
 
 3. **Run the schema script**
    ```sql
-   SOURCE /path/to/Online-Course-Management-System/schema.sql;
+   SOURCE schema.sql;
    ```
 
 4. **Populate sample data**
    ```sql
-   SOURCE /path/to/Online-Course-Management-System/data.sql;
+   SOURCE data.sql;
    ```
 
 5. **Verify tables and data**
@@ -106,10 +128,10 @@ Online-Course-Management-System/
 
 6. **Run the queries**
    ```sql
-   SOURCE /path/to/Online-Course-Management-System/queries.sql;
+   SOURCE queries.sql;
    ```
-   - Queries are numbered and annotated for clarity.
-   - You can copy/paste individual queries to test specific cases.
+   - Queries are numbered (1–50) with a comment above each section.
+   - You can copy/paste individual query blocks to test specific use cases.
 
 ---
 
@@ -155,40 +177,64 @@ GROUP BY c.course_id;
 
 ## 📈 Project Highlights
 
-- **Normalized Schema:** All tables are in 3NF to minimize redundancy.
-- **Rich Sample Data:** Run meaningful queries with realistic records.
-- **Comprehensive Query Set:**  
-    - Selection & Joins (e.g., dropped students, instructor analytics)
-    - Aggregations (`AVG`, `COUNT`), groupings, feedback summaries
-    - Views for modularizing complex logic
-    - Conditional and bulk updates/deletes
-- **ER Diagram:** Quick visual understanding of data relationships.
+- **Normalized Schema:** All tables are in 3rd Normal Form (3NF) to minimize redundancy.
+- **Rich Sample Data:** Realistic records allow meaningful query results.
+- **Comprehensive Query Set:**
+    - Selection & Joins: e.g., dropped students, instructor analytics
+    - Aggregations & Grouping: e.g., average feedback, enrollment counts per course/department
+    - Views: Modularize complex logic into reusable virtual tables
+    - Conditional Updates & Deletes: e.g., auto-complete enrollment when all assignments are submitted, delete stale announcements
+- **ER Diagram:** Provides an immediate visual understanding of relationships (PK/FK).
 
 ---
-
 
 ## 🚀 Next Steps / Extensions
 
-- **Build a Simple Web Interface:**  
-  Use Flask, Node.js/Express, or PHP to connect and build CRUD pages (student registration, instructor dashboard, etc.).
-- **Add Stored Procedures & Triggers:**  
-  E.g., auto-generate certificates when all assignments are submitted.
-- **Performance Tuning & Indexing:**  
-  Add indexes, use `EXPLAIN` to analyze and optimize queries.
-- **Data Export/Import Scripts:**  
-  Export tables to CSV, write scripts for backup/ETL.
+- **Build a Simple Web Interface**
+  - Use Flask (Python), Node.js/Express, or PHP to connect to your MySQL database.
+  - Create basic CRUD pages for:
+    - Student registration & profile view
+    - Instructor dashboard (view enrolled students, post announcements)
+    - Course browsing & enrollment for users
+    - Assignment upload/submission forms
+  - This adds a UI layer on top of your SQL logic.
+
+- **Add Stored Procedures & Triggers**
+  - Example: Trigger to automatically generate a certificate when all assignments for a course are submitted.
+  - Stored procedures to batch-update enrollment statuses or generate summary reports.
+
+- **Performance Tuning & Indexing**
+  - Add indexes on frequently queried columns (e.g., Enrollments.course_id, Submissions.assignment_id).
+  - Use `EXPLAIN` to analyze query plans and optimize join order.
+
+- **Data Export/Import Scripts**
+  - Create .csv exports of tables (e.g., enrollment rosters).
+  - Write a script to import/export data for backup or ETL workflows.
 
 ---
 
-## ✨ Credits
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to open an [issue](https://github.com/AyanMujawar/Online-Course-Management-System/issues) or submit a pull request.
+
+**To contribute:**
+1. Fork the repo
+2. Create a new branch (`git checkout -b feature/YourFeature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/YourFeature`)
+5. Open a Pull Request
+
+---
+
+
+## ✨ Contact
 
 **Project Author:**  
 Ayan Mujawar  
-B.Tech CSE, Pimpri Chinchwad College Of Engineering <br>
+B.Tech CSE, Pimpri Chinchwad College Of Engineering  
 GitHub: [@AyanMujawar](https://github.com/AyanMujawar)
-
-> ⭐️ If you found this useful, please star the repo and share your feedback!
 
 For questions or suggestions, open an [issue](https://github.com/AyanMujawar/Online-Course-Management-System/issues) or contact me via GitHub.
 
----
+> ⭐️ If you found this useful, please star the repo and share your feedback!
