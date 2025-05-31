@@ -184,7 +184,7 @@ GROUP BY c.course_id;
 
 **Project Author:**  
 Ayan Mujawar  
-B.Tech CSE, Pimpri Chinchwad College Of Engineering 
+B.Tech CSE, Pimpri Chinchwad College Of Engineering <br>
 GitHub: [@AyanMujawar](https://github.com/AyanMujawar)
 
 > ⭐️ If you found this useful, please star the repo and share your feedback!
